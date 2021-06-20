@@ -1,14 +1,28 @@
 import { Request, Response, Router } from "express";
+import { validate } from "class-validator"
 import { User } from "../entities/User";
+
 
 const register = async (req: Request, res: Response) => {
     const { email, username, password } = req.body
 
     try {
+        let errors: any = {}
         //validate data
+        const emailUser = await User.findOne({ email })
+        const usernameUser = await User.findOne({ username })
+
+        if(emailUser) errors.email = "You made an oopsie :/ This email is already taken!"
+        if(usernameUser) errors.username = "You made an oopsie :/ This username is alresdy taken!"
+
+        if(Object.keys(errors).length > 0) {
+            return res.status(400).json(errors)
+        }
 
         //create user
         const user = new User({ email, username, password })
+        errors = await validate(user)
+        if(errors.length > 0) return res.status(400).json(errors)
         await user.save()
 
         //return user
