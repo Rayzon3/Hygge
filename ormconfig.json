@@ -5,7 +5,7 @@
    "username": "rahulbhardwaj",
    "password": "rahul123",
    "database": "DB_Hygge",
-   "synchronize": true,
+   "synchronize": false,
    "logging": true,
    "entities": [
       "src/entities/**/*.ts"

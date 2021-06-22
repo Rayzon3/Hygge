@@ -55,7 +55,7 @@ const login = async (req: Request, res: Response) => {
         if(!passwordMatches) return res.status(401).json({ error: "Worng username and password combination !!" })
         
         //gen JWT
-        const token = jwt.sign({ username }, process.env.JWT_SECRET) // idealing should be base62
+        const token = jwt.sign({ username }, process.env.JWT_SECRET!) // idealing should be base62
         //store JWT in cookie
         res.set("Set-Cookie", cookie.serialize("token", token, {
             httpOnly: true,
@@ -67,11 +67,12 @@ const login = async (req: Request, res: Response) => {
         return res.json(user)
 
     } catch (error) {
-        
+        console.log(error)
+        return res.json({ erroe: "Oops, that should not have happened :/ " })
     }
 }
 
-const logout = (_, res: Response) => {
+const logout = ( res: Response) => {
     res.set("Set-Cookie", cookie.serialize("token", "", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
@@ -83,7 +84,7 @@ const logout = (_, res: Response) => {
     return res.status(200).json({ success: true })
 }
 
-const me =  (_, res: Response) => {
+const me =  ( res: Response) => {
    return res.json(res.locals.user)
 }
 
