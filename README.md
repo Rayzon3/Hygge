@@ -1,5 +1,5 @@
 # Hygge
-Hygge is forum/internet board website going to the moon! 🚀
+Hygge is a forum/internet board website going to the moon! 🚀
 
 ## Project is build with:
 1) Next.js
