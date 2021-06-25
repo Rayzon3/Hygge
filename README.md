@@ -1,4 +1,4 @@
-#Hygge
+# Hygge
 
 ## Project is build with:
 1) Next.js
