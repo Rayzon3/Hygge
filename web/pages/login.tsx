@@ -16,7 +16,6 @@ import {
   import Axios from "axios";
   
   const LoginPage = () => {
-    const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState<any>({});
@@ -29,12 +28,11 @@ import {
     const submitForm = async (event: FormEvent) => {
       try {
         event.preventDefault();
-          await Axios.post("/auth/register", {
-          email,
+          await Axios.post("/auth/login", {
           username,
           password,
-        });
-        router.push("/login")
+        })
+        router.push("/")
   
       } catch (error) {
         setErrors(error.response.data);

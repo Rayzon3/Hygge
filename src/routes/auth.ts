@@ -61,10 +61,10 @@ const login = async (req: Request, res: Response) => {
         if(Object.keys(errors).length > 0) return res.status(400).json(errors)
 
         const user = await User.findOne({ username })
-        if(!user) return res.status(404).json({ error: "Worng username and password combination !!" })
+        if(!user) return res.status(404).json({ username: "Worng username and password combination !!" })
 
         const passwordMatches = await bcrypt.compare(password, user.password) 
-        if(!passwordMatches) return res.status(401).json({ error: "Worng username and password combination !!" })
+        if(!passwordMatches) return res.status(401).json({ password: "Worng username and password combination !!" })
         
         //gen JWT
         const token = jwt.sign({ username }, process.env.JWT_SECRET!) // idealing should be base62
