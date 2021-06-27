@@ -5,7 +5,7 @@ Hygge is a forum/internet board website going to the moon! 🚀
 1) Next.js
 2) Chakra UI
 3) TypeORM
-4) DataBase: PostgreSQL
+4) Database: PostgreSQL
 
 
 ## Steps to run this project:
