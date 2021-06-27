@@ -9,13 +9,16 @@ import {
   Icon,
   InputRightElement,
   Box,
-  Container
+  Container,
+  Text,
+  HStack,
 } from "@chakra-ui/react";
 import { SunIcon, MoonIcon, SearchIcon } from "@chakra-ui/icons";
 import { Button, IconButton } from "@chakra-ui/button";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Post } from "../types";
+import Link from "next/link";
 
 export default function Home() {
   const dark = "grey.400";
@@ -84,8 +87,66 @@ export default function Home() {
         </Flex>
         <VStack w={400}>
           {posts.map((post) => (
-            <Container key={post.identifier} background="gray.200" maxW="full" centerContent>
-              {post.body}
+            <Container
+              key={post.identifier}
+              background="gray.200"
+              maxW="full"
+              minH={200}
+              centerContent
+              marginTop={4}
+              mb={2}
+              rounded={6}
+            >
+              <Box
+                bg="gray.100"
+                rounded={6}
+                mt={2}
+                mb={2}
+                minW={380}
+                minH={18}
+                maxH="fit-content"
+                padding={2}
+                fontStyle="italic"
+                fontWeight="semibold"
+              >
+                <HStack>
+                  <Text as="u">
+                    <Link href={`/h/${post.subName}`}>
+                      <a>/h/{post.subName}</a>
+                    </Link>
+                  </Text>
+                  <Text fontWeight="light" as="sub" fontStyle="normal" fontSize={12}>
+                  • Posted by 
+                  </Text>
+                  <Text fontSize={12} as="u">
+                    <Link href={`/u/user`} > 
+                      <a>/u/user</a>
+                    </Link>
+                  </Text>
+                </HStack>
+              </Box>
+              <Box
+                bg="gray.100"
+                rounded={6}
+                mb={2}
+                minW={380}
+                minH={150}
+                maxH="fit-content"
+                padding={2}
+              >
+                {post.body}
+              </Box>
+              <Box
+                mb={2}
+                minW={380}
+                minH={4}
+                maxH="fit-content"
+                fontStyle="normal"
+                fontWeight="light"
+                fontSize={14}
+              >
+                Posted on: {post.createdAt}
+              </Box>
             </Container>
           ))}
         </VStack>
