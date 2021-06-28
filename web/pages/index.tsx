@@ -19,6 +19,10 @@ import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Post } from "../types";
 import Link from "next/link";
+import dayjs from "dayjs";
+import relativeTime from "dayjs/plugin/relativeTime"
+
+dayjs.extend(relativeTime)
 
 export default function Home() {
   const dark = "grey.400";
@@ -145,7 +149,7 @@ export default function Home() {
                 fontWeight="light"
                 fontSize={14}
               >
-                Posted on: {post.createdAt}
+                Posted: {dayjs(post.createdAt).fromNow()}
               </Box>
             </Container>
           ))}
