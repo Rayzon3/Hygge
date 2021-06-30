@@ -5,5 +5,7 @@ export interface Post {
     subName: string
     createdAt: string
     updatedAt: string
-    body: string
+    username: string
+    body?: string
+    url: string
 }
