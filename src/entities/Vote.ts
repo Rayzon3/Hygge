@@ -5,6 +5,7 @@ import Comment from "./Comment";
 
 @TOEntity("votes")
 export class Vote extends Entity {
+    post: import("/Users/rahulbhardwaj/Documents/Dev/nextjs/Hygge/src/entities/Post").default;
 
     constructor(vote: Partial<Vote>){
         super()
