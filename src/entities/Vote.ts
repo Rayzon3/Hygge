@@ -1,11 +1,11 @@
 import {Entity as TOEntity, Column, Index, BeforeInsert, OneToMany, ManyToOne, JoinColumn} from "typeorm";
 import Entity from "./Entity"
+import Post from "./Post";
 import { User } from "./User";
 import Comment from "./Comment";
 
 @TOEntity("votes")
 export class Vote extends Entity {
-    post: import("/Users/rahulbhardwaj/Documents/Dev/nextjs/Hygge/src/entities/Post").default;
 
     constructor(vote: Partial<Vote>){
         super()
@@ -17,12 +17,15 @@ export class Vote extends Entity {
 
     @ManyToOne(() => User)
     @JoinColumn({ name: "username", referencedColumnName: "username" })
-    user: User
+    user: User 
 
     @Column()
     username: string
 
+    @ManyToOne(() => Post)
+    post: Post
+
     @ManyToOne(() => Comment)
     comment: Comment
-   
+
 }
