@@ -5,24 +5,17 @@ import {
   useColorMode,
   useColorModeValue,
   Spacer,
-  Input,
-  Icon,
-  InputRightElement,
-  Box,
-  Container,
-  Text,
-  HStack,
+  Input
 } from "@chakra-ui/react";
 import { SunIcon, MoonIcon, SearchIcon, ChatIcon } from "@chakra-ui/icons";
 import { Button, IconButton } from "@chakra-ui/button";
 import { useEffect, useState } from "react";
 import Axios from "axios";
 import { Post } from "../types";
-import Link from "next/link";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime"
 import { GetServerSideProps } from "next";
-
+import Card from "../components/card"
 
 dayjs.extend(relativeTime)
 
@@ -92,78 +85,7 @@ export default function Home() {
         </Flex>
         <VStack w={500}>
           {posts.map((post) => (
-            <Container
-              key={post.identifier}
-              background="gray.200"
-              maxW="full"
-              maxH="fit-content"
-              centerContent
-              marginTop={4}
-              mb={2}
-              rounded={8}
-            >
-              <Box
-                bg="gray.100"
-                rounded={6}
-                mt={2}
-                mb={2}
-                minW={380}
-                minH={18}
-                maxH="fit-content"
-                padding={2}
-                fontStyle="italic"
-                fontWeight="semibold"
-              >
-                <HStack>
-                  <Text as="u">
-                    <Link href={`/h/${post.subName}`}>
-                      <a>/h/{post.subName}</a>
-                    </Link>
-                  </Text>
-                  <Text fontWeight="light" as="sub" fontStyle="normal" fontSize={12}>
-                  • Posted by 
-                  </Text>
-                  <Text fontSize={12} as="u">
-                    <Link href={`/u/${post.username}`} > 
-                        <a>/u/{post.username}</a>
-                    </Link>
-                  </Text>
-                </HStack>
-              </Box>
-              <Box
-                bg="gray.100"
-                rounded={6}
-                mb={2}
-                minW={380}
-                maxH="fit-content"
-                padding={2}
-              > 
-                <Text fontSize={18} fontWeight="semibold">
-                <Link href={post.url}>
-                  <a>{post.title}</a>
-                </Link>
-                </Text>
-                {post.body}
-              </Box>
-              <Box
-                mb={2}
-                minW={480}
-                minH={4}
-                maxH="fit-content"
-                fontStyle="normal"
-                fontWeight="light"
-                fontSize={14}
-              >
-                <HStack>
-                  <Text>
-                  Posted: {dayjs(post.createdAt).fromNow()}
-                    <IconButton isRounded={true} background={"gray.200"}>
-                      <Icon as={ChatIcon} w={4} h={4} ></Icon>
-                    </IconButton>
-                  </Text>
-                </HStack>
-              </Box>
-            </Container>
+            <Card post={post} key={post.identifier} />
           ))}
         </VStack>
       </VStack>
