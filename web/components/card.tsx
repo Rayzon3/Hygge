@@ -20,7 +20,7 @@ interface CardProps {
     post: Post
 }
 
-export default function Card ({ post: { identifier, title, slug, subName, createdAt, updatedAt, username, body, url, totalVotes, countComment, userVote } }: CardProps) {
+export default function Card ({ post: { identifier, title, slug, subName, createdAt, username, body, url, totalVotes, countComment, userVote } }: CardProps) {
 
   const vote = async (value : number) => {
     try {
