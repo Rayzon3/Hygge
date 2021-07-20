@@ -8,4 +8,7 @@ export interface Post {
     username: string
     body?: string
     url: string
+    totalVotes?: number
+    countComment?: number
+    userVote?: number 
 }

@@ -83,7 +83,7 @@ export default function Home() {
             Recent Posts
           </Heading>
         </Flex>
-        <VStack w={500}>
+        <VStack w={500} spacing={8} rounded="md">
           {posts.map((post) => (
             <Card post={post} key={post.identifier} />
           ))}
