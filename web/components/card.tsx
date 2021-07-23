@@ -107,7 +107,7 @@ export default function Card ({ post: { identifier, title, slug, subName, create
                   </Text>
                   <Spacer/>
                   {/* upvote */}
-                  <IconButton backgroundColor="gray.200" isRound={true} colorScheme="cyan" variant="ghost" onClick={() => vote(1)}>
+                  <IconButton backgroundColor="gray.200" isRound={true} colorScheme="cyan" variant="ghost" onClick={() => vote(1)} >
                     <i className="icon-up-vote"></i>
                   </IconButton>
                   <Text color="black" fontWeight="semibold" fontSize={18}>{totalVotes}</Text>
