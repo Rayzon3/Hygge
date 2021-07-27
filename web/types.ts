@@ -12,3 +12,10 @@ export interface Post {
     countComment?: number
     userVote?: number 
 }
+
+export interface User{
+    username: string
+    email: string
+    createdAt: string
+    updatedAt: string
+}
