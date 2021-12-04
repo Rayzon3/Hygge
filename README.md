@@ -14,4 +14,4 @@ Hygge is a forum/internet board website going to the moon! 🚀
 3. Run `npm start` command
 
 
-In development ⚠️
+Not Maintained ⚠️
